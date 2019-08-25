@@ -23,8 +23,9 @@ public class BattleController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown("space")) {
+        if (Input.GetKeyDown("space") && isAttacking == false && isReturning == false) {
             currentLerpTime = 0f;
+            returnLerpTime = 0f;
             isAttacking = true;
         }
 
@@ -34,8 +35,8 @@ public class BattleController : MonoBehaviour
         }
 
         if (isReturning) {
-            returnLerpTime = 0f;
             ReturnToStart(player.transform.position, startPos);
+            //Debug.Log(isReturning);
         }
         
 
@@ -44,7 +45,7 @@ public class BattleController : MonoBehaviour
     void AttackMovement(Vector3 start, Vector3 target)
     {
 
-        if (currentLerpTime > 1.0f)
+        if (currentLerpTime >= 1.0f)
         {
             currentLerpTime = 0f;
             isAttacking = false;
@@ -61,9 +62,10 @@ public class BattleController : MonoBehaviour
 
     void ReturnToStart(Vector3 start, Vector3 target)
     {
-        if (returnLerpTime > 1.0f)
+        if (returnLerpTime >= 1.0f)
         {
             returnLerpTime = 1.0f;
+            
             isReturning = false;
         }
 
