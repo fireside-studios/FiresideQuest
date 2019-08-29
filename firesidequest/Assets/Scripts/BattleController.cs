@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleController : MonoBehaviour
 {
@@ -14,16 +15,43 @@ public class BattleController : MonoBehaviour
     private float returnLerpTime;
     private bool isAttacking = false;
     private bool isReturning = false;
+    private bool triggerAttack = false;
+
+    public UnityEngine.UI.Button[] objs;
+
+    public BaseHuman playerChar;
+    public BaseHuman enemyChar;
+
+    private BaseHuman aggressor;
+    private BaseHuman defendor;
+
+    private float aggressorSTR;
+    private float defendorCurHP;
+    private float defendorDEF;
 
 
     void Start()
     {
         startPos = player.transform.position;
+
+        foreach (UnityEngine.UI.Button btn in objs)
+        {
+            btn.onClick.AddListener(() => { triggerAttack = true; });
+        }
+
+        aggressor = playerChar.GetComponent<BaseHuman>();
+        defendor = enemyChar.GetComponent<BaseHuman>();
+        aggressorSTR = aggressor.STR;
+        defendorCurHP = defendor.curHP;
+        defendorDEF = defendor.DEF;
+
+
     }
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown("space") && isAttacking == false && isReturning == false) {
+        if (triggerAttack == true && isAttacking == false && isReturning == false) {
+            triggerAttack = false;
             currentLerpTime = 0f;
             returnLerpTime = 0f;
             isAttacking = true;
@@ -36,13 +64,10 @@ public class BattleController : MonoBehaviour
 
         if (isReturning) {
             ReturnToStart(player.transform.position, startPos);
-            //Debug.Log(isReturning);
         }
-        
-
     }
 
-    void AttackMovement(Vector3 start, Vector3 target)
+    public void AttackMovement(Vector3 start, Vector3 target)
     {
 
         if (currentLerpTime >= 1.0f)
@@ -50,6 +75,10 @@ public class BattleController : MonoBehaviour
             currentLerpTime = 0f;
             isAttacking = false;
             isReturning = true;
+            defendorCurHP -= (aggressorSTR - defendorDEF);
+            defendor.curHP = defendorCurHP;
+            Debug.Log(defendor.curHP);
+            Debug.Log(defendorCurHP);
         }
 
         if (isAttacking)
@@ -60,7 +89,7 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    void ReturnToStart(Vector3 start, Vector3 target)
+    public void ReturnToStart(Vector3 start, Vector3 target)
     {
         if (returnLerpTime >= 1.0f)
         {
@@ -76,5 +105,4 @@ public class BattleController : MonoBehaviour
             player.transform.position = Vector3.Lerp(start, target, perc);
         }
     }
-
 }

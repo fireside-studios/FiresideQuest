@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 547014814}
   m_Layer: 5
   m_Name: AttackButton2
-  m_TagString: Untagged
+  m_TagString: BattleButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -652,6 +652,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &927501963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4708811318352162620, guid: fccb245e5cf91e14da5b6929738de3e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1554249778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &927501964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927501963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fdfce8b17fefc4d9bc91f820332354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Enemy
+  baseHP: 10
+  curHP: 10
+  baseMP: 5
+  curMP: 5
+  STR: 7
+  VIT: 10
+  INT: 5
+  DEF: 2
 --- !u!1 &1095860135
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +927,10 @@ MonoBehaviour:
   player: {fileID: 798676403}
   enemy: {fileID: 211311850}
   speed: 1
+  objs:
+  - {fileID: 1935276031}
+  - {fileID: 547014814}
+  - {fileID: 1567748778}
 --- !u!4 &1261407096
 Transform:
   m_ObjectHideFlags: 0
@@ -1076,7 +1107,7 @@ GameObject:
   - component: {fileID: 1567748778}
   m_Layer: 5
   m_Name: AttackButton3
-  m_TagString: Untagged
+  m_TagString: BattleButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1184,49 +1215,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567748776}
   m_CullTransparentMesh: 0
---- !u!1 &1572018278
+--- !u!1 &1627562166 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8696648261657497239, guid: 6f44d8a9b1188e24c82e77671224de3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109410263}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1572018280}
-  - component: {fileID: 1572018279}
-  m_Layer: 0
-  m_Name: BattleUIController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1572018279
+--- !u!114 &1627562167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1572018278}
+  m_GameObject: {fileID: 1627562166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d25d724888b8f043a1fc8301b767c98, type: 3}
+  m_Script: {fileID: 11500000, guid: a2fdfce8b17fefc4d9bc91f820332354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1572018280
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1572018278}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23519687, y: 1.3394024, z: -540.8672}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  name: Player
+  baseHP: 10
+  curHP: 10
+  baseMP: 5
+  curMP: 5
+  STR: 7
+  VIT: 10
+  INT: 5
+  DEF: 2
 --- !u!1 &1935276029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1256,7 @@ GameObject:
   - component: {fileID: 1935276031}
   m_Layer: 5
   m_Name: AttackButton1
-  m_TagString: Untagged
+  m_TagString: BattleButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
