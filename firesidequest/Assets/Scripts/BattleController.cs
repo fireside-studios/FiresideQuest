@@ -29,7 +29,7 @@ public class BattleController : MonoBehaviour
     private float defendorCurHP;
     private float defendorDEF;
 
-
+    [SerializeField] private HealthBar healthBar;
     void Start()
     {
         startPos = player.transform.position;
@@ -77,8 +77,7 @@ public class BattleController : MonoBehaviour
             isReturning = true;
             defendorCurHP -= (aggressorSTR - defendorDEF);
             defendor.curHP = defendorCurHP;
-            Debug.Log(defendor.curHP);
-            Debug.Log(defendorCurHP);
+            healthBar.SetSize(defendorCurHP / defendor.baseHP);
         }
 
         if (isAttacking)
